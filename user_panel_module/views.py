@@ -12,12 +12,12 @@ from .forms import EditProfileModelForm, ChangePasswordForm
 from django.utils.decorators import method_decorator
 
 
-# @method_decorator(login_required, name='dispatch')
+@method_decorator(login_required, name='dispatch')
 class UserPanelDashboardPage(TemplateView):
     template_name = 'user_panel_module/user_panel_dashboard_page.html'
 
-    # def dispatch(self, request, *args, **kwargs):
-    #     pass
+    def dispatch(self, request, *args, **kwargs):
+        return super(self.__class__, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super(UserPanelDashboardPage, self).get_context_data()
@@ -27,10 +27,10 @@ class UserPanelDashboardPage(TemplateView):
         return context
 
 
-# @method_decorator(login_required, name='dispatch')
+@method_decorator(login_required, name='dispatch')
 class EditUserProfilePage(View):
-    # def dispatch(self, request, *args, **kwargs):
-    #     pass
+    def dispatch(self, request, *args, **kwargs):
+        return super(self.__class__, self).dispatch(request, *args, **kwargs)
 
     def get(self, request: HttpRequest):
         current_user = User.objects.filter(id=request.user.id).first()
@@ -54,10 +54,10 @@ class EditUserProfilePage(View):
         return render(request, 'user_panel_module/edit_profile_page.html', context)
 
 
-# @method_decorator(login_required, name='dispatch')
+@method_decorator(login_required, name='dispatch')
 class ChangePasswordPage(View):
-    # def dispatch(self, request, *args, **kwargs):
-    #     pass
+    def dispatch(self, request, *args, **kwargs):
+        return super(self.__class__, self).dispatch(request, *args, **kwargs)
 
     def get(self, request: HttpRequest):
         context = {
@@ -90,7 +90,7 @@ def user_panel_menu_component(request: HttpRequest):
 
 @login_required
 def user_cart(request: HttpRequest):
-    user_open_cart, created = Order.objects.prefetch_related('orderdetail_set').get_or_create(is_paid=False,user_id=request.user.id)
+    user_open_cart, created = Order.objects.prefetch_related('orderdetail_set').get_or_create(is_paid=False, user_id=request.user.id)
     total_amount = user_open_cart.calculate_total_price()
     context = {
         'cart': user_open_cart,

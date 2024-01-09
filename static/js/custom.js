@@ -73,7 +73,7 @@ function changeOrderDetailCount(detailId, state) {
     $.get('/user-panel/change-order-detail?detail_id=' + detailId + '&state=' + state).then(res => {
         if (res.status === 'success') {
             $('#order-detail-content').html(res.body);
-            window.location.href = 'http://127.0.0.1:8080/user-panel/user-cart'
+            window.location.href = 'http://localhost:8080/user-panel/user-cart'
         }
     });
     // window.location.href = 'http://127.0.0.1:8080/user-panel/user-cart'

@@ -27,7 +27,6 @@ class Order(models.Model):
         verbose_name_plural = "سبد های خرید"
 
 
-
 class OrderDetail(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE,verbose_name='سبد خرید')
     product = models.ForeignKey(Product, on_delete=models.CASCADE,verbose_name='محصول')
