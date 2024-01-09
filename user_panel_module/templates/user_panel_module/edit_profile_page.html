@@ -1,0 +1,38 @@
+{% extends 'shared/_latout.html' %}
+{% load render_partial %}
+{% load thumbnail %}
+
+
+{% block title %}
+            ویرایش اطلاعات
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            {% if current_user.avatar %}
+                <a href="">
+                    {% thumbnail current_user.avatar '200x200' crop='center' as im %}
+                        <img style="margin-bottom: 20px; margin-right: 40px;" src="{{ im.url }}" class="profile-image" alt="">
+                    {% endthumbnail %}
+                </a>
+            {% endif %}
+
+            {% render_partial 'user_panel_module.views.user_panel_menu_component' %}
+        </div>
+        <div class="col-md-8">
+            <form enctype="multipart/form-data" action="{% url 'edit_profile_page' %}" method="post">
+                {% csrf_token %}
+                {{ edit_form }}
+                <button type="submit" class="btn btn-success" style="
+                    border-top-width: 1px;
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                    margin-right: 0;
+                    margin-left: 20px;">ثبت</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

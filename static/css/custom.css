@@ -1,0 +1,20 @@
+.errorlist {
+    padding-right: 0 !important;
+}
+
+.errorlist li {
+    color: red;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.col-md-8 pull-right {
+    border-radius: 20px; padding: 10px 10px 10px 10px;
+}
+
+h4 #cart_product_title {
+    width: 100px;
+    margin-right: 50px;
+}

@@ -1,0 +1,31 @@
+{% extends 'shared/_latout.html' %}
+{% load render_partial %}
+{% load thumbnail %}
+
+{% block title %}
+پنل کاربری
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="col-md-8 pull-right" style="border-radius: 20px; padding: 10px 10px 10px 10px;">
+        {% thumbnail user.avatar '200x200' crop='center' as im %}
+            <img src="{{ im.url }}" style="border-radius: 20px; padding: 10px 10px 10px 10px;" alt="">
+        {% endthumbnail %}
+        <div class="col-md-8" style="padding: 10px 10px 10px 10px">
+                <p> نام کاربری : {{ current_user.username }}</p>
+                <p> نام : {{ current_user.first_name }}</p>
+                <p> نام خانوادگی : {{ current_user.last_name }}</p>
+                <p> درباره کاربر : {{ current_user.about_user }}</p>
+                <p> آدرس : {{ current_user.address }}</p>
+            </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 pull-left">
+            {% render_partial 'user_panel_module.views.user_panel_menu_component' %}
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}
