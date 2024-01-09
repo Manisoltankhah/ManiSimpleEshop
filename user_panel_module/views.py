@@ -12,12 +12,12 @@ from .forms import EditProfileModelForm, ChangePasswordForm
 from django.utils.decorators import method_decorator
 
 
-@method_decorator(login_required, name='dispatch')
+# @method_decorator(login_required, name='dispatch')
 class UserPanelDashboardPage(TemplateView):
     template_name = 'user_panel_module/user_panel_dashboard_page.html'
 
-    def dispatch(self, request, *args, **kwargs):
-        pass
+    # def dispatch(self, request, *args, **kwargs):
+    #     pass
 
     def get_context_data(self, **kwargs):
         context = super(UserPanelDashboardPage, self).get_context_data()
@@ -27,10 +27,10 @@ class UserPanelDashboardPage(TemplateView):
         return context
 
 
-@method_decorator(login_required, name='dispatch')
+# @method_decorator(login_required, name='dispatch')
 class EditUserProfilePage(View):
-    def dispatch(self, request, *args, **kwargs):
-        pass
+    # def dispatch(self, request, *args, **kwargs):
+    #     pass
 
     def get(self, request: HttpRequest):
         current_user = User.objects.filter(id=request.user.id).first()
@@ -54,10 +54,10 @@ class EditUserProfilePage(View):
         return render(request, 'user_panel_module/edit_profile_page.html', context)
 
 
-@method_decorator(login_required, name='dispatch')
+# @method_decorator(login_required, name='dispatch')
 class ChangePasswordPage(View):
-    def dispatch(self, request, *args, **kwargs):
-        pass
+    # def dispatch(self, request, *args, **kwargs):
+    #     pass
 
     def get(self, request: HttpRequest):
         context = {
